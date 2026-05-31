@@ -1,8 +1,8 @@
- 
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Birthday bentyy Souhaila</title>
     <style>
         /* Reset and Base Styles */
@@ -10,10 +10,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* إزالة الوميض الأزرق عند الضغط في الآيفون */
         }
         body, html {
             width: 100%;
             height: 100%;
+            height: 100vh; /* يضمن ملء الشاشة بالكامل في متصفحات الآيفون */
             overflow: hidden;
             background-color: #000;
             font-family: 'Courier New', Courier, monospace;
@@ -26,6 +28,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            height: 100vh;
             transition: opacity 1.5s ease-in-out, visibility 1.5s;
         }
 
@@ -63,6 +66,7 @@
             justify-content: center;
             align-items: center;
             pointer-events: none;
+            padding: 20px;
         }
 
         /* Neon Glow Common Styles */
@@ -76,11 +80,12 @@
                 0 0 80px #ff007f;
             text-align: center;
             font-weight: bold;
+            word-wrap: break-word;
         }
 
         /* Phase 1: Countdown Styles */
         #countdown {
-            font-size: 8rem;
+            font-size: 6rem; /* تم تصغيره قليلاً ليلائم الهواتف */
             display: block;
             transition: opacity 0.3s ease;
         }
@@ -90,13 +95,17 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
+            width: 100%;
+            max-width: 90%;
+            align-items: center;
         }
 
         .msg-line {
-            font-size: 3rem;
+            font-size: 2.2rem; /* ضبط الحجم ليناسب عرض شاشة الهاتف */
             opacity: 0;
-            letter-spacing: 4px;
-            white-space: nowrap;
+            letter-spacing: 2px;
+            white-space: normal; /* السماح بنزول السطر إذا كانت الشاشة صغيرة جداً */
+            text-align: center;
         }
 
         .typing {
@@ -113,6 +122,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
+            height: 100vh;
             z-index: 2;
             display: flex;
             flex-direction: column;
@@ -120,28 +130,36 @@
             align-items: center;
             padding: 40px 20px;
             transition: opacity 1s ease;
+            pointer-events: none; /* لمنع حجب اللمس عن العناصر بالخلفية */
+        }
+
+        .galaxy-ui h2, .galaxy-ui .book-container {
+            pointer-events: auto; /* إعادة تفعيل اللمس للعنوان والكتاب فقط */
         }
 
         /* Book Element */
         .book-container {
             margin-top: auto; 
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             perspective: 1000px;
             cursor: pointer;
             z-index: 15;
             transition: transform 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .book-container:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .magic-book {
-            width: 120px;
-            height: 160px;
+            width: 100px; /* حجم أنسب للهواتف */
+            height: 140px;
             background: linear-gradient(135deg, #4a0e4e 0%, #2c0c30 100%);
             border-radius: 4px 12px 12px 4px;
-            border-left: 8px solid #ff007f;
+            border-left: 6px solid #ff007f;
             box-shadow: 0 0 25px rgba(255, 0, 127, 0.6), inset -2px 0 5px rgba(255,255,255,0.2);
             display: flex;
             justify-content: center;
@@ -150,7 +168,7 @@
         }
 
         .book-heart {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #ff007f;
             text-shadow: 0 0 10px #ff007f;
             animation: beat 1.2s infinite alternate ease-in-out;
@@ -163,8 +181,8 @@
 
         .book-hint {
             color: #ff66b2;
-            font-size: 0.9rem;
-            margin-top: 10px;
+            font-size: 0.85rem;
+            margin-top: 12px;
             text-shadow: 0 0 5px #000;
             font-weight: bold;
             letter-spacing: 1px;
@@ -178,7 +196,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(5, 2, 15, 0.85);
+            height: 100vh;
+            background: rgba(5, 2, 15, 0.9);
             z-index: 20;
             display: flex;
             justify-content: center;
@@ -186,6 +205,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.5s ease;
+            padding: 15px;
         }
 
         .album-modal.active {
@@ -196,8 +216,9 @@
         /* 3D Photo Album Flip Container */
         .album-container {
             position: relative;
-            width: 320px;
-            height: 420px;
+            width: 100%;
+            max-width: 300px; /* ملائم تماماً لعرض أجهزة الآيفون بجميع إصداراتها */
+            height: 400px;
             perspective: 1200px;
             cursor: pointer;
             transition: opacity 0.8s ease;
@@ -223,8 +244,8 @@
             width: 100%;
             height: 100%;
             background: #fff;
-            padding: 15px;
-            padding-bottom: 50px; 
+            padding: 12px;
+            padding-bottom: 60px; 
             border-radius: 8px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             backface-visibility: hidden;
@@ -242,22 +263,23 @@
 
         .photo-caption {
             font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             color: #333;
             text-align: center;
-            margin-top: 15px;
+            margin-top: 12px;
             font-weight: bold;
+            word-wrap: break-word;
         }
 
         .close-album {
             position: absolute;
-            top: 20px;
+            top: 25px;
             right: 20px;
-            background: none;
+            background: rgba(5, 2, 15, 0.6);
             border: 2px solid #ff007f;
             color: #ff007f;
-            padding: 8px 16px;
-            font-size: 1rem;
+            padding: 6px 14px;
+            font-size: 0.9rem;
             cursor: pointer;
             border-radius: 20px;
             font-family: monospace;
@@ -280,20 +302,33 @@
             opacity: 0;
             transform: scale(0.5);
             transition: opacity 2s ease, transform 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-size: 2.5rem;
-            letter-spacing: 2px;
+            font-size: 1.8rem; /* تصغير حجم الخط ليتناسب مع شاشة الموبايل */
+            letter-spacing: 1px;
             pointer-events: none;
             width: 100%;
             text-align: center;
-            padding: 0 10px;
+            padding: 0 20px;
         }
 
-        /* Responsive adjustments */
+        /* Responsive adjustments for super small or specific iPhones */
         @media (max-width: 600px) {
-            #countdown { font-size: 5rem; }
-            .msg-line { font-size: 1.6rem; letter-spacing: 2px; }
-            .album-container { width: 280px; height: 380px; }
-            #heartMessage { font-size: 1.4rem; letter-spacing: 1px; }
+            #countdown { font-size: 4.5rem; }
+            .msg-line { font-size: 1.7rem; letter-spacing: 1px; }
+            .album-container { max-width: 280px; height: 380px; }
+            #heartMessage { font-size: 1.4rem; }
+            .galaxy-ui h2 { font-size: 1.4rem !important; }
+            
+            /* الكارت الأخير يحتوي على نص طويل جداً، قمنا بتصغير حجم خطه ليظهر كاملاً دون مشاكل في الآيفون */
+            .photo-card:last-child .photo-caption {
+                font-size: 0.68rem !important;
+                line-height: 1.3;
+                overflow-y: auto; /* السماح بالتمرير داخل الرسالة إذا لم تكف المساحة */
+                max-height: 100%;
+                padding-right: 2px;
+            }
+            .photo-card:last-child .photo-front {
+                padding-bottom: 20px !important;
+            }
         }
     </style>
 </head>
@@ -320,7 +355,7 @@
         </div>
 
         <div id="galaxyUi" class="galaxy-ui">
-            <h2 class="neon-text" style="font-size: 2rem; margin-top: 20px; letter-spacing: 2px;">The best memories together✨</h2>
+            <h2 class="neon-text" style="font-size: 1.8rem; margin-top: 20px; letter-spacing: 1px;">The best memories together✨</h2>
             
             <div class="book-container" onclick="openAlbum()">
                 <div class="magic-book">
@@ -394,7 +429,7 @@
                 <div class="photo-card" style="z-index: 1;">
                     <div class="photo-front" style="justify-content: center; align-items: center; background: #fff;">
                         <div style="font-size: 1rem;">❤️</div>
-                        <div class="photo-caption" style="color: #000000; font-size: 0.9rem;">Happy birthday bentyy souhaila lyoma kmlty 22Y wlakin f3winaty atb9ay dima benty sghiwra lhmim9a kantmnaa l2a3wam jayin ykono hssen whssen wtb9ay dimaa farhanaa wana fakhoor biik wghdi nbghek dima tkoni lfo9 llfo9 whssen mn kolchii wfo9ma thtaji chi had ana awle wahad ghdi tl9ayh chokraan 3Laa kolchii w3la ga3e lhwayaj li derty 3La 9bli w3La ayy haja dertiha wkhlatni nkon frhan babatek ayb9a dima kybgheek wghtb9ay dima ajml haja w93at fhyatoo wakha maghdix nkon m3ak dima wlkn 3ref bli ghnb9a dima f9lbeek wf39leek lmhm db 3ichi hyateek kifma bghyaha nty wlah ysahal 3Leek wrdii lbal lrassek bzaaf bzaaf albgira dyalii 🐄🧡
+                        <div class="photo-caption" style="color: #000000; font-size: 0.85rem; font-weight: bold;">Happy birthday bentyy souhaila lyoma kmlty 22Y wlakin f3winaty atb9ay dima benty sghiwra lhmim9a kantmnaa l2a3wam jayin ykono hssen whssen wtb9ay dimaa farhanaa wana fakhoor biik wghdi nbghek dima tkoni lfo9 llfo9 whssen mn kolchii wfo9ma thtaji chi had ana awle wahad ghdi tl9ayh chokraan 3Laa kolchii w3la ga3e lhwayaj li derty 3La 9bli w3La ayy haja dertiha wkhlatni nkon frhan babatek ayb9a dima kybgheek wghtb9ay dima ajml haja w93at fhyatoo wakha maghdix nkon m3ak dima wlkn 3ref bli ghnb9a dima f9lbeek wf39leek lmhm db 3ichi hyateek kifma bghyaha nty wlah ysahal 3Leek wrdii lbal lrassek bzaaf bzaaf albgira dyalii 🐄🧡
                             
                             15/5/2025 </div>
                     </div>
@@ -430,7 +465,7 @@
         window.addEventListener('resize', resizeMatrixCanvas);
 
         const matrixChars = "HAPPYBIRTHDAY".split("");
-        const fontSize = 24; 
+        const fontSize = 20; /* تقليل حجم الخط البرمجي قليلاً ليعطي كثافة أجمل على الموبايل */
         
         let columns = Math.floor(matrixCanvas.width / fontSize);
         let drops = [];
@@ -575,7 +610,7 @@
             window.addEventListener('resize', resizeGalaxyCanvas);
             
             stars = [];
-            const totalStars = 350; 
+            const totalStars = 250; /* تم تقليله قليلاً للموبايل لضمان نعومة الأنيميشن والأداء السلس وسرعة التجاوب */
             for (let i = 0; i < totalStars; i++) {
                 let angle = Math.random() * Math.PI * 2;
                 stars.push({
@@ -615,7 +650,7 @@
                 if (formHeartShape) {
                     const cx = galaxyCanvas.width / 2;
                     const cy = galaxyCanvas.height * 0.45;
-                    const sizeFactor = Math.min(galaxyCanvas.width, galaxyCanvas.height) * 0.022 * pulseScale; 
+                    const sizeFactor = Math.min(galaxyCanvas.width, galaxyCanvas.height) * 0.020 * pulseScale; 
 
                     let t = star.heartAngle;
                     let targetX = cx + 16 * Math.pow(Math.sin(t), 3) * sizeFactor;
@@ -662,7 +697,6 @@
             mainAlbumContainer.style.opacity = '1';
             mainAlbumContainer.style.pointerEvents = 'auto';
             
-            // إخفاء النص عند فتح الألبوم مجدداً لإعادة التشغيل بشكل صحيح
             heartMessage.style.opacity = '0';
             heartMessage.style.transform = 'scale(0.5)';
         }
@@ -680,11 +714,10 @@
                 
                 formHeartShape = true;
                 
-                // 4. إظهار جملة "Kanbgheek Abnty souhaila" بالتزامن مع تجمع القلب الكوني بأنيميشن رائع
                 setTimeout(() => {
                     heartMessage.style.opacity = '1';
                     heartMessage.style.transform = 'scale(1)';
-                }, 800); // تأخير بسيط حتى تبدأ النجوم في رسم ملامح القلب أولاً
+                }, 800); 
             }, 400);
         }
 
