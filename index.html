@@ -83,11 +83,17 @@
             word-wrap: break-word;
         }
 
-        /* Phase 1: Countdown Styles */
+        /* Phase 1: Countdown Styles - تم ضبط المحاذاة في الوسط تماماً */
         #countdown {
-            font-size: 6rem; /* تم تصغيره قليلاً ليلائم الهواتف */
+            font-size: 6rem; 
             display: block;
             transition: opacity 0.3s ease;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
         }
 
         /* Phase 2 & 3: Message Text Styles */
